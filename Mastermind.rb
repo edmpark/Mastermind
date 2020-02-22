@@ -13,10 +13,8 @@ class Mastermind
   end
 
   def play
-    puts "Input 1 to be code breaker. Input 2 to be code maker (Computer will be codebreaker)"
-    player_type = gets.chomp.to_i
     for i in 0..11 do
-      @board[i] = guess(player_type)
+      @board[i] = guess()
       @feedback_board[i] = feedback(@board[i])
       puts @board.map {|x| x.to_s }.join("\n") 
       puts
@@ -56,11 +54,7 @@ class Mastermind
     @peg_colors.include?(input)
   end
 
-  def guess(type)
-    if type == 2
-      ai_guess()
-    end
-
+  def guess
     inputs = []
     puts "Input 4 guesses"
     while inputs.length() < 4
